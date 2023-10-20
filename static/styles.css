@@ -1,0 +1,64 @@
+/* CSS for the body */
+/*.straight-line-list {
+    list-style-type: none; //Remove default bullet/number style 
+    padding: 20;
+    background-color: rgb(104, 167, 74); // Remove default padding 
+    height: 50px;
+}
+
+.straight-line-list li {
+    display: inline; // Display list items in a straight line 
+    margin-right: 10px; // Add spacing between list items if needed 
+}
+.menus
+{
+    background-color: white;
+    color: black;
+    font-size: larger;
+}
+.heading
+{
+    background-color:black;
+    // Change to the color you desire 
+    color: white;
+    height: 100px;
+}
+.side {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // Create a flex container 
+}
+
+h1
+{
+    font-size: xx-large;
+}
+
+.bottom{
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(140, 111, 125);
+    color: black;
+    height: 35px;
+    font-size: smaller;
+}*/
+
+
+.heading
+{
+    background-color:rgb(186, 173, 59);
+    /*Change to the color you desire */
+    color: rgb(80, 91, 170);
+    height: 100px;
+}
+
+.whole_page{
+    font-size: larger;
+}
+*
+{
+    margin: 0px;
+}
+body
+{
+    background-color: pink;
+}
