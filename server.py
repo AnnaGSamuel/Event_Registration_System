@@ -6,7 +6,7 @@ app = Flask(__name__)
 db = mysql.connector.connect(
     host = "localhost",
     user = "root",
-    password = "root",
+    password = "root@123",
     database = "event"
 
 )
@@ -35,7 +35,11 @@ def submit():
               values = (name,email,start_date)
               cursor.execute(sql,values)
               db.commit()
-              return render_template("reg_success.html")
+              
+              
+
+              return render_template("reg_success.html",name=name,email=email,st=start_date)
+              
     except Exception as e:
         # Handle database-related errors here
         error_message = "An error occurred: " + str(e)
@@ -44,17 +48,3 @@ def submit():
 if(__name__ == "__main__"):
     app.run(debug=True)
 
-'''try:
-        cursor.execute("SELECT COUNT(*) FROM form WHERE event_date = %s", (start_date,))
-        is_date_booked = cursor.fetchone()[0]
-
-        if is_date_booked:
-            error_message = "Already booked. Please choose another date."
-            return render_template("travel.html", error_msg=error_message)
-        else:
-            sql = "INSERT INTO form (name, email, event_date) VALUES (%s, %s, %s)"
-            values = (name, email, start_date)
-            cursor.execute(sql, values)
-            db.commit()
-            return render_template("reg_success.html")'''
-    
