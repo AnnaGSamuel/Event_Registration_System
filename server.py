@@ -6,7 +6,7 @@ app = Flask(__name__)
 db = mysql.connector.connect(
     host = "localhost",
     user = "root",
-    password = "root",
+    password = "root@123",
     database = "event"
 
 )
@@ -36,11 +36,9 @@ def submit():
               cursor.execute(sql,values)
               db.commit()
               
-              last_inserted_id = cursor.lastrowid
-              cursor.execute("SELECT * FROM your_table_name WHERE id = %s", (last_inserted_id,))
-              last_inserted_row = cursor.fetchone()
+              
 
-              return render_template("reg_success.html",details=last_inserted_row)
+              return render_template("reg_success.html",name=name,email=email,st=start_date)
               
     except Exception as e:
         # Handle database-related errors here
