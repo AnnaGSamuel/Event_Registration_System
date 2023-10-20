@@ -47,9 +47,9 @@
         </select><br><br>
         <label for="">Starting date of the event*:</label><br>
         <input type="date"name="start_date"id="date"placeholder="mm/dd/yyyy" required><br><br>
-        <br><br>
         <label for="">Ending date of the event*:</label><br>
         <input type="date"name="end_date"id="date"placeholder="mm/dd/yyyy" required><br><br>
+        <span id="date_error" style="color:red">{{error_msg}}</span> <br><br>
         <label >Do you need a photographer*:</label><br>
           <input type="radio"name="photo"id="Yes"value="Yes">
           <label for="Yes" >YES</label>
