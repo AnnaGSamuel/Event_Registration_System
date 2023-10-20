@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events List</title>
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
+</head>
+<body>
+    <div class="nav">
+        <div class="logo"><h1>Event Registration System</h1></div>
+        <div class="navlinks">
+            <ul>
+              <li><a class="naveborder" href="">Home</a></li>
+              <li><a class="naveborder" href="{{url_for('event_list')}}">Events</a></li>
+           </ul>            
+        </div>
+      </div> 
+    <center>
+        <h1>Events List</h1>
+        <form action="/add_events" method="post">
+        <input type="text" name="new_events" placeholder="Add a new event">
+        <button type="submit">Add events</button>
+        </form>
+        <ul id ="ul2">
+            {% for events in events %}
+            <li id = "li2">
+                {{ events }}
+                <a href="/delete_events/{{ loop.index0 }}"><button type="submit">Delete</button></a>
+            </li>
+            {% endfor %}
+        </ul>
+    </center>
+</body>
+</html>

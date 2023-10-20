@@ -5,22 +5,31 @@
     <link rel="stylesheet" href="../static/reg_success.css">
 </head>
 <body>
-    <h2>Registration Successful!</h2>
-    <h4>Thank you for registering.</h4> <br>
+    <div class="nav">
+        <div class="logo"><h1>Event Registration System</h1></div>
+    
+        <div class="navlinks">
+            <ul>
+                <li><a class="naveborder" href="">Home</a></li>
+                <li><a class="naveborder" href="{{url_for('event_list')}}">Events</a></li> 
+            </ul>            
+        </div>
+    </div>
+    <h2>Confirm Registration!</h2><br>
     <div class="box">
         <form>
-            <label>Event name : </label><br>
-            <label>Organizer name : </label><br>
-            <label>Start date : </label><br><br>
-            <label>End date : </label><br>
+            <label><strong>Event name : {{ename}}</strong></label><br>
+            <label>Organizer name : {{name}}</label><br>
+            <label>Institution: {{inst_name}}</label><br>
+            <label>Contact no : {{phone}}</label><br>
+            <label>Email: {{email}}</label><br>
+            <label>Expected participants: {{count}}</label><br>
+            <label>Photographer: {{photo_choice}}</label><br>
+            <label>Food: {{food_choice}}</label><br>
+            <label>Start date : {{start}}</label><br>
+            <label>End date : {{end}}</label><br><br>
             
-
-            <label>Event name :{{name}} </label><br>
-            <label>email :{{email}} </label>
-            <br>
-            <label>date :{{st}} </label>
-            
-            <br>
+            <input type="button" value="Confirm"><br><br>
             <input type="button" value="Share registration link">
         </form>
     </div>
