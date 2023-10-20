@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Travel reservation</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>Travel reservation form</h1><br>
+    <strong>* denotes mandatory</strong> <br><br>
+    <form action="{{url_for('submit')}}" method="post">
+        <label for="name">Full name*:</label> <br>
+        <input type="text" placeholder="FirstName LastName" name="name"><br><br>
+        <label for="email">Email address*:</label> <br>
+        <input type="text" name="email"><br><br>
+
+        <label for="name">Arrival date*:</label> <br>
+        <input type="date" name="date"><br><br>
+        <span id="date_error" style="color:red">{{error_msg}}</span> <br><br>
+
+        <input type="submit" value="Complete reservation">
+
+    </form>
+</body>
+</html>
