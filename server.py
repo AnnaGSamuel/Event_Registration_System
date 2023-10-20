@@ -7,7 +7,7 @@ app.secret_key = 'secret123*'
 db = mysql.connector.connect(
     host = "localhost",
     user = "root",
-    password = "root",
+    password = "root@123",
     database = "event"
 
 )
@@ -47,8 +47,7 @@ def submit():
               db.commit()
               
               last_inserted_id = cursor.lastrowid
-              print(last_inserted_id)
-              cursor.execute("SELECT * FROM form WHERE lastrowid = %s", (last_inserted_id,))
+              cursor.execute("SELECT * FROM your_table_name WHERE id = %s", (last_inserted_id,))
               last_inserted_row = cursor.fetchone()
 
               return render_template("reg_success.html",details=last_inserted_row)
