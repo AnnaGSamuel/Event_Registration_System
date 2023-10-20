@@ -56,10 +56,6 @@ def submit():
 def event_list():
     return render_template("index.html")
 
-@app.route("/reg_success")
-def show_reg_success():
-    return render_template("reg_success.html", name=request.args.get("name"), email=request.args.get("email"), start=request.args.get("start"))
-
 if(__name__ == "__main__"):
     app.run(debug=True)
 
