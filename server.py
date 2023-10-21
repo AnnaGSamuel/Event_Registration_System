@@ -13,12 +13,21 @@ db = mysql.connector.connect(
 cursor = db.cursor()
 
 @app.route("/")
-def show_form():
+def show_events():
+    cursor.execute("SELECT * FROM form ORDER BY start_date")  
+    all_events = cursor.fetchall()
+    return render_template("event.html",events = all_events)
+    '''query = "SELECT * FROM form WHERE (start_date <= %s AND end_date >= %s) OR (start_date <= %s AND end_date >= %s)"
+    cursor.execute(query, (start_date, start_date, end_date, end_date))
+    is_date_booked = cursor.fetchone()'''
+
+@app.route("/add_event")
+def add_event():
     return render_template("log_form.html")
 
 
-@app.route("/login", methods = ["POST"])
-def submit():
+@app.route("/submit_form", methods = ["POST", "GET"])
+def submit_form():
     if(request.method == "POST"):
         institution_name = request.form["institution_name"]
         full_name = request.form["fullname"]
@@ -33,11 +42,12 @@ def submit():
         terms= request.form["terms"]
         
         try:
-            cursor.execute("SELECT COUNT(*) FROM form WHERE start_date = %s",(start_date,))
-            is_date_booked = cursor.fetchone()[0]
+            query = "SELECT * FROM form WHERE (start_date <= %s AND end_date >= %s) OR (start_date <= %s AND end_date >= %s)"
+            cursor.execute(query, (start_date, start_date, end_date, end_date))
+            is_date_booked = cursor.fetchone()
 
             if(is_date_booked):
-                error_message = "Already booked.Please choose another date."
+                error_message = "Sorry, the selected time slot is already booked. Please choose another date."
                 return render_template("log_form.html",error_msg = error_message)
             else:
                 sql = "INSERT INTO form (inst_name,full_name,email,phone, event_name,count,start_date,end_date,photo,food,terms) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
@@ -52,10 +62,5 @@ def submit():
             error_message = "An error occurred: " + str(e)
             return render_template("log_form.html", error_msg=error_message)
 
-@app.route("/event_list")
-def event_list():
-    return render_template("index.html")
-
 if(__name__ == "__main__"):
     app.run(debug=True)
-

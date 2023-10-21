@@ -5,17 +5,8 @@
     
     <title>LOGIN</title>
 </head>
-<body>   
-    <div class="nav">
-        <div class="logo"><h1>Event Registration System</h1></div>
-        
-        <div class="navlinks">
-           <ul>
-              <li><a class="naveborder" href="">Home</a></li>
-              <li><a class="naveborder" href="{{url_for('event_list')}}">Events</a></li>
-           </ul>            
-        </div>
-      </div>
+<body>
+  <div class="logo"><h1>Event Registration System</h1></div>   
      <div class="heading"><br>
       <h2>REGISTRATION </h2>
      </div>
@@ -26,7 +17,7 @@
     <div class="division">
     <div class="blank1"></div>
     <div class="forms">
-    <form action="{{url_for('submit')}}" method="post">
+    <form action='{{ url_for("submit_form") }}' method="post">
         <label for="">Institution name*:</label><br>
         <input type="text"name="institution_name"required><br><br>
         <label for="">Full name*:</label><br>
@@ -46,9 +37,9 @@
          <option value="BEYOND 100000">BEYOND 100000</option>
         </select><br><br>
         <label for="">Starting date of the event*:</label><br>
-        <input type="date"name="start_date"id="date"placeholder="mm/dd/yyyy" required><br><br>
+        <input type="datetime-local"name="start_date"id="date"placeholder="mm/dd/yyyy" required><br><br>
         <label for="">Ending date of the event*:</label><br>
-        <input type="date"name="end_date"id="date"placeholder="mm/dd/yyyy" required><br><br>
+        <input type="datetime-local"name="end_date"id="date"placeholder="mm/dd/yyyy" required><br><br>
         <span id="date_error" style="color:red">{{error_msg}}</span> <br><br>
         <label >Do you need a photographer*:</label><br>
           <input type="radio"name="photo"id="Yes"value="Yes">
@@ -61,11 +52,11 @@
           <input type="radio"name="food"id="No"value="No">
           <label for="No" >No</label><br><br>
         <label >Terms and conditions*:</label><br>
-          <input type="radio"name="terms"id="agree"value="agree">
+          <input type="radio"name="terms"id="agree"value="agree" required>
           <label for="agree" >I agree</label>
           <input type="radio"name="terms"id="disagree"value="disagree">
           <label for="disagree" >I disagree</label><br><br>
-        <input type="submit" name= "submit" value= "submit"><br>
+        <input type="submit" name= "submit" value= "Submit"><br>
     </form>
 </div>
 <div class="blank2"></div>

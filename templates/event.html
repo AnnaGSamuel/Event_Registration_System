@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upcoming Events</title>
+    <link rel="stylesheet" type="text/css" href="../static/event.css">
+</head>
+<body>
+    <div class="logo"><h1>Event Registration System</h1></div>
+    <h1>Upcoming Events</h1>
+    <div class="add-event-button">
+        <a href="{{url_for('add_event')}}">Add Event</a>
+    </div>
+    
+    <!--<input type="submit" name="add_event" id="add_event" value="Add Event">-->
+    <div class="box">
+    <ul>
+        {% for event in events %}
+            <li class="event-item">
+                <div class="event-heading">
+                    <h2>{{ event[4] }}</h2> <br>
+                </div>
+                
+                <div class="event-details">
+                    By : {{ event[0] }} <br>
+                    Contact : {{event[3]}}  ({{event[1]}})<br>
+                    Start Date: {{ event[6] }} &nbsp; &nbsp; End Date: {{ event[7] }}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+  </div>
+</body>
+</html>

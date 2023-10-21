@@ -1,0 +1,97 @@
+.box {
+    text-align: center;
+}
+
+.add-event-button {
+    text-align: right;
+    margin: 10px;
+}
+
+.add-event-button a {
+    display: inline-block;
+    background-color: #007BFF; /* Change the background color as desired */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.add-event-button a:hover {
+    background-color: #0056b3; /* Change the background color on hover */
+    color: white;
+}
+
+/* Style for the list item containing the event */
+.event-item {
+    list-style-type: none;
+    padding: 0;
+    background-color:white;/* black;*/
+    opacity: 0.7;
+    display: flex;
+    margin: 10px;
+    padding: 20px;
+    border: 2px solid white;
+    max-width: 800px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Style for the event heading on the left */
+.event-heading {
+    flex: 1; /* Takes up 50% of the available width */
+    padding: 10px;
+    color: black;
+    text-align: left;
+}
+
+/* Style for the event details on the right */
+.event-details {
+    flex: 1; /* Takes up 50% of the available width */
+    padding: 10px;
+    color: black;
+    text-align: left;
+}
+
+ h1 {
+    text-align: center;
+  }
+  body {
+    background-image: url(https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxpdmUlMjBldmVudHxlbnwwfHwwfHx8MA%3D%3D);
+    background-size: cover;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    justify-content: center;
+    min-height: 100vh;
+    /*margin-left: 250px;*/
+
+    }
+  
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin-left: 300px;
+    }
+    
+    li {
+        background-color: white;/*rgba(240,240,240);*/
+        opacity: 0.5;
+        display: flex;
+        margin: 30px;
+        padding: 20px;
+        border: 2px solid white;
+        max-width: 800px;
+        box-shadow: 2px 2px 4px white;/* rgba(0, 0, 0, 0.1);*/
+        text-align: center;
+    }
+    
+    li p {
+        margin: 10px 0;
+    }
+
+    .details {
+        float: right;
+    }
+    #add_event {
+        text-align: right;
+    }

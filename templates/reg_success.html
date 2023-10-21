@@ -5,16 +5,8 @@
     <link rel="stylesheet" href="../static/reg_success.css">
 </head>
 <body>
-    <div class="nav">
-        <div class="logo"><h1>Event Registration System</h1></div>
     
-        <div class="navlinks">
-            <ul>
-                <li><a class="naveborder" href="">Home</a></li>
-                <li><a class="naveborder" href="{{url_for('event_list')}}">Events</a></li> 
-            </ul>            
-        </div>
-    </div>
+    <div class="logo"><h1>Event Registration System</h1></div>
     <h2>Confirm Registration!</h2><br>
     <div class="box">
         <form>
@@ -29,8 +21,9 @@
             <label>Start date : {{start}}</label><br>
             <label>End date : {{end}}</label><br><br>
             
-            <input type="button" value="Confirm"><br><br>
-            <input type="button" value="Share registration link">
+            <div class="add-event-button">
+                <a href="{{url_for('show_events')}}">Confirm</a>
+            </div>
         </form>
     </div>
 </body>
