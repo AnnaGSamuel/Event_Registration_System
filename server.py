@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,redirect,url_for
 import mysql.connector
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -17,9 +18,6 @@ def show_events():
     cursor.execute("SELECT * FROM form ORDER BY start_date")  
     all_events = cursor.fetchall()
     return render_template("event.html",events = all_events)
-    '''query = "SELECT * FROM form WHERE (start_date <= %s AND end_date >= %s) OR (start_date <= %s AND end_date >= %s)"
-    cursor.execute(query, (start_date, start_date, end_date, end_date))
-    is_date_booked = cursor.fetchone()'''
 
 @app.route("/add_event")
 def add_event():
@@ -35,11 +33,15 @@ def submit_form():
         phone = request.form["phone_number"]
         event_name= request.form["title_name"]
         count = request.form["Number"]
-        start_date= request.form["start_date"]
-        end_date= request.form["end_date"]
+        start_date_str= request.form["start_date"]
+        end_date_str= request.form["end_date"]
         photo= request.form["photo"]
         food= request.form["food"]
         terms= request.form["terms"]
+    
+        # Parse the datetime string from the form
+        start_date = datetime.strptime(start_date_str, '%Y-%m-%dT%H:%M')
+        end_date = datetime.strptime(end_date_str, '%Y-%m-%dT%H:%M')
         
         try:
             query = "SELECT * FROM form WHERE (start_date <= %s AND end_date >= %s) OR (start_date <= %s AND end_date >= %s)"

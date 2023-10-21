@@ -10,8 +10,7 @@
     <div class="add-event-button">
         <a href="{{url_for('add_event')}}">Add Event</a>
     </div>
-    
-    <!--<input type="submit" name="add_event" id="add_event" value="Add Event">-->
+
     <div class="box">
     <ul>
         {% for event in events %}
@@ -23,7 +22,8 @@
                 <div class="event-details">
                     By : {{ event[0] }} <br>
                     Contact : {{event[3]}}  ({{event[1]}})<br>
-                    Start Date: {{ event[6] }} &nbsp; &nbsp; End Date: {{ event[7] }}
+                    Start Date: {{ event[6] }} <br>
+                    End Date: {{ event[7] }}
                 </div>
             </li>
         {% endfor %}
