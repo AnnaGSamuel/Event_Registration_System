@@ -1,6 +1,7 @@
-from flask import Flask,render_template,request,redirect,url_for
+from flask import Flask,render_template,request
 import mysql.connector
 from datetime import datetime
+from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
 
@@ -11,7 +12,22 @@ db = mysql.connector.connect(
     database = "event"
 )
 
+admin_password = "123*"
+
 cursor = db.cursor()
+
+# Initialize the scheduler
+scheduler = BackgroundScheduler()
+scheduler.start()
+
+def delete_expired_events():
+    current_date = datetime.today()
+    cursor.execute("DELETE FROM form WHERE end_date < %s", (current_date,))
+    db.commit()
+
+def schedule_event_deletion():
+    scheduler.add_job(delete_expired_events, 'interval', hours=6)  # Runs the task daily
+    
 
 @app.route("/")
 def show_events():
@@ -19,9 +35,20 @@ def show_events():
     all_events = cursor.fetchall()
     return render_template("event.html",events = all_events)
 
-@app.route("/add_event")
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/add_event", methods=["GET", "POST"])
 def add_event():
-    return render_template("log_form.html")
+    if request.method == "POST":
+        entered_password = request.form["password"]
+        if entered_password == admin_password:
+            return render_template("log_form.html")
+        else:
+            error_message = "Wrong password. Please try again."
+            return render_template("login.html", error_msg=error_message)
+    return render_template("login.html")
 
 
 @app.route("/submit_form", methods = ["POST", "GET"])
@@ -65,4 +92,5 @@ def submit_form():
             return render_template("log_form.html", error_msg=error_message)
 
 if(__name__ == "__main__"):
+    schedule_event_deletion()
     app.run(debug=True)
